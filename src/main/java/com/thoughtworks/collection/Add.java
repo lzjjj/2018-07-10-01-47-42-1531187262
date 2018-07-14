@@ -90,9 +90,14 @@ public class Add {
     }
 
     public List<Integer> getProcessedList(List<Integer> arrayList) {
-        return  null;
-//        return arrayList.stream()
-//                .map( i->(i+ (arrayList.indexOf(i) < arrayList.size() ? arrayList.get(arrayList.indexOf(i)): 0) *3)
-//                .collect(Collectors.toList());
+
+        List<Integer> result = new ArrayList<>();
+        arrayList.stream().reduce((num1, num2) -> {
+                    Integer num = (num1 + num2) * 3;
+                    result.add(num);
+                    return num2;
+                }
+        );
+        return result;
     }
 }
